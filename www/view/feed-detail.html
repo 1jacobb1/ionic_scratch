@@ -1,0 +1,35 @@
+<ion-view view-title="{{headTitle}}">
+	<ion-nav-bar class="bar-stable">
+		<ion-nav-back-button>
+		</ion-nav-back-button>
+	</ion-nav-bar>
+	<ion-content ng-controller="FeedsDetailCtrl">
+		<div class="list card">
+			<div class="item item-body">
+				<p style="margin: 0px;"><big>"</big>{{feed.caption}}<big>"</big></p>
+			</div>
+			<div class="item item-body">
+				<img class="full-image" src="{{feed.images.normal}}" ng-if="!feed.media">
+				<div stlye="border: 50px solid black;">
+					<video style="width:100%;" src="{{feed.media.mp4}}" ng-if="feed.media" autoplay loop></video>
+				</div>
+				<p>
+					<a href="#" class="subdued ion-arrow-graph-up-left"> {{feed.votes.count}}</a>
+					<a href="#/feed/{{feed.id}}" class="subdued ion-chatbox-working"> {{feed.comments.count}}</a>
+				</p>
+			</div>
+			<div class="row responsive-md">
+				<div class="list">
+					<a class="item item-body" href="javascript:void(0);" ng-repeat="comment in comments" style="padding-left: 72px; min-height: 72px;">
+						<img style="position: absolute; top: 16px; left: 16px; max-width: 40px; max-height: 40px; width: 100%; height: 100%; border-radius: 50%;" src="{{comment.user.avatar}}">
+						<h2 style="margin-top:0px; margin-bottom: 0px;">{{comment.user.displayName}}</h2>
+						<p style="margin-top:0px;">{{comment.text}}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+		<!-- <div class="bar bar-footer bar-balanced">
+		  <div class="title">foot</div>
+		</div> -->
+</ion-view>

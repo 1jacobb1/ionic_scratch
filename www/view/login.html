@@ -1,0 +1,20 @@
+<ion-view view-title="9Git">
+  <ion-content scroll="false" ng-controller="LoginCtrl">
+    <script src="js/controller/login.js"></script>
+    <img class="logo-center" src="img/ionic.png">
+    <div class="list list-inset">
+      <form name="formLogin">
+        <label class="item item-input">
+          <input type="text" placeholder="Username" ng-model="user.username" required>
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password" ng-model="user.password" required>
+        </label>
+        <span class="assertive ion-alert" ng-show="loginMessage"> {{loginMessage}}</span>
+        <button class="button button-block button-positive" ng-click="login(user)">Login</button>
+      </form ng-disabled="formLogin.$invalid">
+      <span>Register</span> |
+      <span>Forgot Password?</span>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,20 @@
+<ion-view view-title="Feeds">
+	<ion-nav-bar class="bar-stable">
+	</ion-nav-bar>
+	<ion-content ng-controller="FeedsCtrl">
+		<ion-refresher on-refresh="doRefresh()"></ion-refresher>
+		<div class="list card" ng-repeat="feed in feeds">
+			<div class="item item-body">
+				<h2 style="margin-top: 0px;">{{feed.caption}}</h2>
+				<img class="full-image" src="{{feed.images.cover}}" ng-if="!feed.media">
+				<video style="width: 100%;" ng-if="feed.media" src="{{feed.media.mp4}}" loop autoplay></video>
+				<p>
+					<a href="#" class="subdued ion-arrow-graph-up-left"> {{feed.votes.count}}</a>
+					<a href="#/feed/{{feed.id}}" class="subdued ion-chatbox-working"> {{feed.comments.count}}</a>
+				</p>
+			</div>
+		</div>
+		<ion-infinite-scroll on-infinite="loadMore()" distance="3%"></ion-infinite-scroll>
+	</ion-content>
+
+</ion-view>
